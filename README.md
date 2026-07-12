@@ -1,39 +1,48 @@
 # medical.exefile
 
-Medical application executable — Windows desktop application for medical clinic/hospital management.
+Medical application executable — Windows desktop app for clinic/hospital management.
 
-## Description
+## Features
 
-Windows executable (.exe) based medical application, likely built with:
-- C#/.NET (WPF/WinForms)
-- C++/Qt
-- Java (packaged as exe via launch4j)
-- Python (PyInstaller/cx_Freeze)
-
-## Features (Typical)
-
-- Patient registration and records
-- Appointment scheduling
-- Prescription management
+- Patient registration and records (EMR-lite)
+- Appointment scheduling with calendar view
+- Prescription management (drug database, interactions)
 - Billing and invoicing
-- Lab test integration
-- Report generation
+- Lab test ordering and results
+- User roles: Admin, Doctor, Nurse, Receptionist
+
+## Tech Stack
+
+- Language: C# (.NET Framework / .NET 6+) or C++ (Qt) or Java (packaged as exe)
+- Database: SQLite (local) or SQL Server (network)
+- UI: WPF / WinForms / Qt / JavaFX
 
 ## Run
 
 ```bash
-# If .exe present
+# If .NET
 ./medical.exe
 
-# If Python-based
-python medical.py
-
-# If Java-based
+# If Java
 java -jar medical.jar
+
+# If native
+./medical
+```
+
+## Database Schema (Expected)
+
+```
+patients (id, name, dob, gender, contact, address, history)
+appointments (id, patient_id, doctor_id, datetime, status)
+prescriptions (id, patient_id, doctor_id, drugs, dosage, notes)
+billing (id, patient_id, items, total, paid, date)
+users (id, username, role, password_hash)
 ```
 
 ## Notes
 
-- Repo name suggests single executable distribution
+- Repo name suggests single-file executable distribution
 - Academic/early-stage project (2024)
-- Check for source code in repo or release assets
+- Check releases for compiled binary
+- Source may be in separate repo
